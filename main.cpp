@@ -1,6 +1,4 @@
-// juan.freedev@gmail.com
-// www.youtube.com/user/juantuts
-// (extraido de www.miniwin.readthedocs.org)
+
 
 #include <cstdlib>
 #include <ctime>
@@ -19,8 +17,8 @@ typedef int Tablero[COLUMNAS][FILAS];
 struct Coord { int x, y; };
 
 struct Pieza {
-   Coord orig; // bloque central (posición absoluta)
-   Coord perif[3]; // bloques periféricos (posición relativa)
+   Coord orig; // bloque central (posiciÃ³n absoluta)
+   Coord perif[3]; // bloques perifÃ©ricos (posiciÃ³n relativa)
    int color;
 
    Coord posicion(int n) const; // n entre 0 y 3 (0 = central, 1-3 = perif.)
@@ -64,7 +62,7 @@ void rota_derecha(Pieza& P) {
 void tablero_vacia(Tablero& T) {
    for (int i = 0; i < COLUMNAS; i++) {
       for (int j = 0; j < FILAS; j++) {
-         T[i][j] = NEGRO; // Esto significa casilla vacía
+         T[i][j] = NEGRO; // Esto significa casilla vacÃ­a
       }
    }
 }
@@ -88,7 +86,7 @@ void tablero_incrusta_pieza(Tablero& T, const Pieza& P) {
 bool tablero_colision(const Tablero& T, const Pieza& P) {
    for (int i = 0; i < 4; i++) {
       Coord c = P.posicion(i);
-      // Comprobar límites
+      // Comprobar lÃ­mites
       if (c.x < 0 || c.x >= COLUMNAS) {
          return true;
       }
@@ -205,7 +203,7 @@ void game_over() {
 
 int main() {
    vredimensiona(TAM * COLUMNAS + 220, TAM * FILAS + 100);
-   srand(time(0)); // Inicializar los números al azar (poner la semilla)
+   srand(time(0)); // Inicializar los nÃºmeros al azar (poner la semilla)
 
    int tic = 0, puntos = 0, nivel = 0;
 
@@ -242,7 +240,7 @@ int main() {
       } else if (t == IZQUIERDA) {
          c.orig.x--;
       }
-      // 2. Mirar si hay colisión
+      // 2. Mirar si hay colisiÃ³n
       if (tablero_colision(T, c)) {
          c = copia;
          if (t == ABAJO) {
